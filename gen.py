@@ -9,15 +9,41 @@ import mrz.generator.mrvb
 from PIL import Image
 from trdg.generators import GeneratorFromStrings
 
-VALID_COUNTRY_CODES = ['USA', 'CAN', 'GBR', 'AUS', 'FRA', 'CHN', 'IND',
-                       'BRA', 'JPN', 'ZAF', 'RUS', 'MEX', 'ITA', 'ESP', 'NLD', 'SWE', 'ARG', 'BEL', 'CHE']
+COUNTRIES = {
+    "BLR":"Belarus-passport-mini.jpg",
+    "BEL":"Belgium-passport-mini.jpg",
+    "BGR":"Bulgaria-passport-mini.jpg",
+    "CAN":"Canada-passport-mini.jpg",
+    "CHL":"Chile-passport-mini.jpg",
+    "CHN":"China-passport-mini.jpg",
+    "DOM":"Dominicana-passport-mini.jpg",
+    "EST":"Estonia-passport-mini.jpg",
+    "D":"Germany-passport-mini.jpg",
+    "IDN":"Indonesia-passport-mini.jpg",
+    "IRL":"Ireland-passport-mini.jpg",
+    "ITA":"Italy-passport-mini.jpg",
+    "KAZ":"Kazakhstan-passport-mini.jpg",
+    "KGZ":"Kyrgyzstan-passport-mini.jpg",
+    "MEX":"Mexico-passport-mini.jpg",
+    "MDA":"Moldova-passport-mini.jpg",
+    "NLD":"Netherlands-passport-mini.jpg",
+    "POL":"Poland-passport-mini.jpg",
+    "ROU":"Romania-passport-mini.jpg",
+    "SVK":"Slovakia-passport-mini.jpg",
+    "ESP":"Spain-passport-mini.jpg",
+    "GBR":"United-kingdom-of-great-britain-passport-mini.jpg",
+    "URY":"Uruguay-passport-mini.jpg",
+    "UZB":"Uzbekistan-passport-mini.jpg"
+}
 
 MRZ_TYPES = ['TD1','TD2','TD3','MRVA','MRVB']
 
-def random_generate(doc_type=""):
+def random_generate(doc_type="",nationality="GBR"):
     surname = random_surname()
     given_names = random_given_names()
-    nationality = random.choice(VALID_COUNTRY_CODES)
+    if nationality == "" or nationality == None:
+        nationality = random.choice(list(COUNTRIES.keys()))
+    print(nationality)
     sex = random.choice(['M', 'F'])
     if doc_type == "" or doc_type == None:
         doc_type = random.choice(MRZ_TYPES)
@@ -32,7 +58,7 @@ def generate_images(code):
     fonts = ["OCR-B.ttf"]
     lines = str(code).split("\n")
     width = len(lines[0])*15 + 10
-    generator = GeneratorFromStrings(lines,count = len(lines),fonts = fonts, width=width, alignment=1, background_type=1,margins=(2, 2, 2, 2))
+    generator = GeneratorFromStrings(lines,count = len(lines),fonts = fonts, width=width, alignment=1, background_type=1)
     imgs = []
     for img, lbl in generator:
         imgs.append(img)
@@ -100,8 +126,9 @@ def merged_image(imgs):
 
 
 if __name__ == "__main__":
-    code = random_generate()
-    imgs = generate_images(code)
-    merged = merged_image(imgs)
-    merged.save("out.png","PNG")
+    for key in COUNTRIES.keys():
+        code = random_generate(doc_type="TD3",nationality=key)
+        imgs = generate_images(code)
+        merged = merged_image(imgs)
+        merged.save(key+".png","PNG")
     

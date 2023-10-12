@@ -12,12 +12,13 @@ VALID_COUNTRY_CODES = ['USA', 'CAN', 'GBR', 'AUS', 'FRA', 'CHN', 'IND',
 
 MRZ_TYPES = ['TD1','TD2','TD3','MRVA','MRVB']
 
-def random_generate():
+def random_generate(docType=""):
     surname = random_surname()
     given_names = random_given_names()
     nationality = random.choice(VALID_COUNTRY_CODES)
     sex = random.choice(['M', 'F'])
-    docType = random.choice(MRZ_TYPES)
+    if docType == "":
+        docType = random.choice(MRZ_TYPES)
     document_number = random_string(9, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789')
     birth_date = random_date().strftime('%y%m%d')
     expiry_date = random_date(start_year=datetime.datetime.now(
@@ -66,5 +67,5 @@ def generate_MRZ(docType,country,surname,given_names,document_number,nationality
 
 
 if __name__ == "__main__":
-    code = random_generate()
+    code = random_generate(docType="TD1")
     print(code)

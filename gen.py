@@ -31,7 +31,8 @@ def random_generate(doc_type=""):
 def generate_images(code):
     fonts = ["OCR-B.ttf"]
     lines = str(code).split("\n")
-    generator = GeneratorFromStrings(lines,count = len(lines),fonts = fonts)
+    width = len(lines[0])*15 + 10
+    generator = GeneratorFromStrings(lines,count = len(lines),fonts = fonts, width=width, alignment=1, background_type=1,margins=(2, 2, 2, 2))
     imgs = []
     for img, lbl in generator:
         imgs.append(img)
@@ -81,11 +82,20 @@ def merged_image(imgs):
     h = 0
     for img in imgs:
         h = h + img.height
-    dst = Image.new('RGB', (w, h))
+    dst = Image.new('RGBA', (w, h))
     top = 0
     for img in imgs:
         dst.paste(img, (0, top))
         top = top + img.height
+
+    datas = dst.getdata()
+    newData = []
+    for item in datas:
+        if item[0] == 255 and item[1] == 255 and item[2] == 255:
+            newData.append((255, 255, 255, 0))
+        else:
+            newData.append(item)
+    dst.putdata(newData)
     return dst
 
 
@@ -93,5 +103,5 @@ if __name__ == "__main__":
     code = random_generate()
     imgs = generate_images(code)
     merged = merged_image(imgs)
-    merged.save("out.jpg")
+    merged.save("out.png","PNG")
     

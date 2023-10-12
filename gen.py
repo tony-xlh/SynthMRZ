@@ -17,7 +17,7 @@ def random_generate(doc_type=""):
     given_names = random_given_names()
     nationality = random.choice(VALID_COUNTRY_CODES)
     sex = random.choice(['M', 'F'])
-    if doc_type == "":
+    if doc_type == "" or doc_type == None:
         doc_type = random.choice(MRZ_TYPES)
     document_number = random_string(9, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789')
     birth_date = random_date().strftime('%y%m%d')

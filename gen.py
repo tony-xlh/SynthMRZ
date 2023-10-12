@@ -6,6 +6,7 @@ import mrz.generator.td2
 import mrz.generator.td3
 import mrz.generator.mrva
 import mrz.generator.mrvb
+from PIL import Image
 from trdg.generators import GeneratorFromStrings
 
 VALID_COUNTRY_CODES = ['USA', 'CAN', 'GBR', 'AUS', 'FRA', 'CHN', 'IND',
@@ -27,14 +28,14 @@ def random_generate(doc_type=""):
     code = generate_MRZ(doc_type,nationality,surname,given_names,document_number,nationality,birth_date,sex,expiry_date,"","")
     return code
 
-def generate_image(code):
+def generate_images(code):
     fonts = ["OCR-B.ttf"]
     lines = str(code).split("\n")
     generator = GeneratorFromStrings(lines,count = len(lines),fonts = fonts)
-    index = 0
+    imgs = []
     for img, lbl in generator:
-        img.save(str(index)+".jpg")
-        index = index + 1
+        imgs.append(img)
+    return imgs
 
 def random_string(length=10, allowed_chars='ABCDEFGHIJKLMNOPQRSTUVWXYZ'):
     return ''.join(random.choice(allowed_chars) for i in range(length))
@@ -75,7 +76,22 @@ def generate_MRZ(doc_type,country,surname,given_names,document_number,nationalit
         code = mrz.generator.mrvb.MRVBCodeGenerator("V", country, surname, given_names, document_number, nationality, birth_date, sex, expiry_date, optional1)
     return code
 
+def merged_image(imgs):
+    w = imgs[0].width
+    h = 0
+    for img in imgs:
+        h = h + img.height
+    dst = Image.new('RGB', (w, h))
+    top = 0
+    for img in imgs:
+        dst.paste(img, (0, top))
+        top = top + img.height
+    return dst
+
 
 if __name__ == "__main__":
-    code = random_generate(doc_type="TD1")
-    generate_image(code)
+    code = random_generate()
+    imgs = generate_images(code)
+    merged = merged_image(imgs)
+    merged.save("out.jpg")
+    

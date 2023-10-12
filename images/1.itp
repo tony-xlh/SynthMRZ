@@ -1,0 +1,696 @@
+{
+    "settings": {
+        "otsu_enabled": true,
+        "resize_before_balloon": true,
+        "defaultInpainter": 3,
+        "checkColorForSeparationInference": false,
+        "correct_input": true,
+        "threshold": "200",
+        "use_puretext": false,
+        "overlapped_width_percent": 50,
+        "default_text_box_width": "100",
+        "autocorrect": [],
+        "precisionMode": 0,
+        "output_format": 0,
+        "sourceLang": "en",
+        "maskRadius": 0,
+        "maxFontSize": 100,
+        "position_restraint": false,
+        "richtext": false,
+        "readSubFolder": true,
+        "char_center_align": "[\\!\\?！？⁉‼…—~⋮0-9a-zA-Z]",
+        "showTTSButton": true,
+        "char_rotate": "[…—~]",
+        "byTextArea": false,
+        "invert": false,
+        "resize_before_OCR": true,
+        "inferSeparation": true,
+        "output_with_bitmapcreator": false,
+        "balloon_divide_ratio": 4,
+        "minimumHSpan": "10",
+        "resize_before_balloon_height": 1024,
+        "expand": "6",
+        "output_folder": "out",
+        "pdf_dpi": 300,
+        "resize_before_OCR_width": 2500,
+        "expand_for_balloon": true,
+        "defaultMaskGen": 0,
+        "inpaintRadius": 3,
+        "blur": false,
+        "timeout": "60",
+        "fontStyles": [],
+        "right2left": false,
+        "autoFontSize": true,
+        "invertBasedOnColor": false,
+        "firstchar_to_moveup": "",
+        "imgQuality": 90,
+        "expanding_pix": 5,
+        "autoThreshold": true,
+        "targetLang": "zh",
+        "overlapped_height_percent": 70,
+        "textLocalizationProcess": [
+            "去除外部区域",
+            "横向合并",
+            "纵向合并",
+            "过滤过小项",
+            "去除内部区域",
+            "拓展区域"
+        ],
+        "minimumHeight": "3",
+        "minFontSize": 15,
+        "furiganaStipperMethod": 0,
+        "auto_params": true,
+        "cjk_vertical_text_engine": true,
+        "default_text_box_height": "50",
+        "dilation": 6,
+        "autocorrect_enabled": false,
+        "char_right_align": "[\\.,。，、]",
+        "OCR_divide_ratio": 4,
+        "resize": true,
+        "maximumHeight": "100",
+        "sortBasedOnPanel": true,
+        "char_zerowordspace": "[—]",
+        "convert_vertical_to_horizontal_layout": false,
+        "sortCriteria": 0,
+        "char_replace": "{\n  \"（\":\"︵\",\n  \"）\":\"︶\",\n  \"『\":\"﹃\",\n  \"』\":\"﹄\"\n}",
+        "minimumVSpan": "10"
+    },
+    "images": {
+        "Slovakia-passport-mini.jpg": {
+            "boxes": [
+                {
+                    "geometry": {
+                        "X": 264,
+                        "width": 1819,
+                        "Y": 1279,
+                        "height": 58
+                    },
+                    "text": "P<SVKZLNKA<<MARTIN<<<<<<<<<<<<<<<<<<<<<<<<<<"
+                },
+                {
+                    "geometry": {
+                        "X": 264,
+                        "width": 1817,
+                        "Y": 1380,
+                        "height": 60
+                    },
+                    "text": "P4958172<5SVK7806201M1904013<<<<<<<<<<<<<<03"
+                }
+            ]
+        },
+        "Belarus-passport-mini.jpg": {
+            "boxes": [
+                {
+                    "suitableSize": 36,
+                    "geometry": {
+                        "X": 242,
+                        "width": 1828,
+                        "Y": 1261,
+                        "height": 72
+                    },
+                    "text": "P<BLRMFAA<<YOULIYA<<<<<<<<<<<<<<<<<<<<<<<<<"
+                },
+                {
+                    "suitableSize": 37,
+                    "geometry": {
+                        "X": 242,
+                        "width": 1828,
+                        "Y": 1377,
+                        "height": 74
+                    },
+                    "text": "RH14278489BLR8304172M83041713300161K027PB220"
+                }
+            ]
+        },
+        "Chile-passport-mini.jpg": {
+            "boxes": [
+                {
+                    "suitableSize": 33,
+                    "geometry": {
+                        "X": 313,
+                        "width": 1699,
+                        "Y": 1220,
+                        "height": 66
+                    },
+                    "text": "P<CHLMAURICIO<GONZALEZ<<RUA<<<<<<<<<<<<<<<<<",
+                    "target": ""
+                },
+                {
+                    "suitableSize": 31,
+                    "geometry": {
+                        "X": 314,
+                        "width": 1702,
+                        "Y": 1320,
+                        "height": 62
+                    },
+                    "text": "78397584<3CHL9504040M1910131B1680671<<<<<<00"
+                }
+            ]
+        },
+        "Uzbekistan-passport-mini.jpg": {
+            "boxes": [
+                {
+                    "geometry": {
+                        "X": 269,
+                        "width": 1742,
+                        "Y": 1241,
+                        "height": 74
+                    },
+                    "text": "P<UZBMIRUSMANOV<<FAKHRIDDIN<<<<<<<<<<<<<<<<<"
+                },
+                {
+                    "geometry": {
+                        "X": 273,
+                        "width": 1737,
+                        "Y": 1347,
+                        "height": 74
+                    },
+                    "text": "AA32372971UZB6906193M23102993190669658001640"
+                }
+            ]
+        },
+        "Estonia-passport-mini.jpg": {
+            "boxes": [
+                {
+                    "geometry": {
+                        "X": 334,
+                        "width": 1686,
+                        "Y": 1308,
+                        "height": 60
+                    },
+                    "text": "P<ESTKAMOSNIKOV<<DMITRI<<<<<<<<<<<<<<<<<<<<<"
+                },
+                {
+                    "geometry": {
+                        "X": 334,
+                        "width": 1684,
+                        "Y": 1409,
+                        "height": 55
+                    },
+                    "text": "VB00451440XXX8204147M160523938204140231<<<46"
+                }
+            ]
+        },
+        "Uruguay-passport-mini.jpg": {
+            "boxes": [
+                {
+                    "geometry": {
+                        "X": 317,
+                        "width": 1847,
+                        "Y": 1318,
+                        "height": 68
+                    },
+                    "text": "P<HUNGVOZDEVA<<IRINA<<<<<<<<<<<<<<<<<<<<"
+                },
+                {
+                    "geometry": {
+                        "X": 319,
+                        "width": 1832,
+                        "Y": 1412,
+                        "height": 63
+                    },
+                    "text": "BD85403962HUN8509022F2311078<<<<<<<<<<<<<<06"
+                }
+            ]
+        },
+        "Italy-passport-mini.jpg": {
+            "boxes": [
+                {
+                    "geometry": {
+                        "X": 276,
+                        "width": 1809,
+                        "Y": 1238,
+                        "height": 68
+                    },
+                    "text": "P<ITAFERRARI<<GIAMBATTISTA<<<<<<<<<<<<<<<<<<"
+                },
+                {
+                    "geometry": {
+                        "X": 276,
+                        "width": 1812,
+                        "Y": 1342,
+                        "height": 75
+                    },
+                    "text": "YC44320574ITA8004047M2007200<<<<<<<<<<<<<<02"
+                }
+            ]
+        },
+        "Sweden-passport-mini.jpg": {
+            "boxes": [
+                {
+                    "geometry": {
+                        "X": 297,
+                        "width": 1744,
+                        "Y": 1266,
+                        "height": 55
+                    },
+                    "text": "P<SWEHENRIKSSON<<JONAS<<<<<<<<<<<<<<<<<<<<<<"
+                },
+                {
+                    "geometry": {
+                        "X": 297,
+                        "width": 1742,
+                        "Y": 1371,
+                        "height": 58
+                    },
+                    "text": "86124390<7SWE8004026M1806036198004028117<<90"
+                }
+            ]
+        },
+        "Kyrgyzstan-passport-mini.jpg": {
+            "boxes": [
+                {
+                    "geometry": {
+                        "X": 326,
+                        "width": 1684,
+                        "Y": 1232,
+                        "height": 58
+                    },
+                    "text": "P<KGZB0 GUBAEV<<AZAMAT<<<<<<<<<<<<<<<<<<<<<<"
+                },
+                {
+                    "geometry": {
+                        "X": 326,
+                        "width": 1682,
+                        "Y": 1318,
+                        "height": 58
+                    },
+                    "text": "AC264414<5KGZ7701166M17030102160119770033446"
+                }
+            ]
+        },
+        "Mexico-passport-mini.jpg": {
+            "boxes": [
+                {
+                    "geometry": {
+                        "X": 319,
+                        "width": 1742,
+                        "Y": 1241,
+                        "height": 63
+                    },
+                    "text": "P<MEXSAN<JUAN<GUZMAN<<LAURA<<<<<<<<<<"
+                },
+                {
+                    "geometry": {
+                        "X": 317,
+                        "width": 1739,
+                        "Y": 1334,
+                        "height": 79
+                    },
+                    "text": "I000005470MEX8110103F2211167<<<<<<<<<<<<<<04"
+                }
+            ]
+        },
+        "United-kingdom-of-great-britain-passport-mini.jpg": {
+            "boxes": [
+                {
+                    "geometry": {
+                        "X": 289,
+                        "width": 1772,
+                        "Y": 1285,
+                        "height": 70
+                    },
+                    "text": "P<GBRFOMKIN<<ALEKSEY<<<<<<<<<<<<<<<<<<<<<<<<"
+                },
+                {
+                    "geometry": {
+                        "X": 295,
+                        "width": 1766,
+                        "Y": 1369,
+                        "height": 60
+                    },
+                    "text": "5032403533GBR7006236M2305296<<<<<<<<<<<<<<06"
+                }
+            ]
+        },
+        "Moldova-passport-mini.jpg": {
+            "boxes": [
+                {
+                    "geometry": {
+                        "X": 392,
+                        "width": 1592,
+                        "Y": 1246,
+                        "height": 67
+                    },
+                    "text": "PAMDASHIL0VA<<VERA<<<<<<<<<<<<<<<<<<<<<<<<<<<"
+                },
+                {
+                    "geometry": {
+                        "X": 394,
+                        "width": 1589,
+                        "Y": 1339,
+                        "height": 67
+                    },
+                    "text": "A1920523<7MDA8804182F17062842002005040823<26"
+                }
+            ]
+        },
+        "Belgium-passport-mini.jpg": {
+            "boxes": [
+                {
+                    "suitableSize": 40,
+                    "geometry": {
+                        "X": 324,
+                        "width": 1719,
+                        "Y": 1273,
+                        "height": 80
+                    },
+                    "text": "P<BELBRUGGEMAN<<FRANK<MARIA<LEON<<<<<<<<<<<<"
+                },
+                {
+                    "suitableSize": 40,
+                    "geometry": {
+                        "X": 326,
+                        "width": 1717,
+                        "Y": 1359,
+                        "height": 80
+                    },
+                    "text": "EJ312622<7BEL7210202M1705139<<<<<<<<<<<<<<04"
+                }
+            ]
+        },
+        "USA-Passport.jpg": {
+            "boxes": [
+                {
+                    "suitableSize": 27,
+                    "geometry": {
+                        "X": 32,
+                        "width": 1531,
+                        "Y": 1002,
+                        "height": 55
+                    },
+                    "text": "P<NELSON<<CALLIE<<<<<<<<<<<<<<<<<<<<<<<",
+                    "target": ""
+                },
+                {
+                    "suitableSize": 31,
+                    "geometry": {
+                        "X": 30,
+                        "width": 1536,
+                        "Y": 1091,
+                        "height": 62
+                    },
+                    "text": "4220167749USA8810171F2712239572615374<585990"
+                }
+            ],
+            "text-removed": true
+        },
+        "Poland-passport-mini.jpg": {
+            "boxes": [
+                {
+                    "geometry": {
+                        "X": 317,
+                        "width": 1799,
+                        "Y": 1233,
+                        "height": 68
+                    },
+                    "text": "P<P0LJAW0RSKI<<PI0TR<<<<<<<<<<<<<<<<<<<<<<<<"
+                },
+                {
+                    "geometry": {
+                        "X": 311,
+                        "width": 1805,
+                        "Y": 1328,
+                        "height": 77
+                    },
+                    "text": "AT87800282P0L6909253M1808018<<<<<<<<<<<<<<02"
+                }
+            ]
+        },
+        "Romania-passport-mini.jpg": {
+            "boxes": [
+                {
+                    "geometry": {
+                        "X": 289,
+                        "width": 1777,
+                        "Y": 1293,
+                        "height": 75
+                    },
+                    "text": "PTROUMIKAELYAN<<ARTIN<<<<<<<<<<<<<<<<<<<<<<<"
+                },
+                {
+                    "geometry": {
+                        "X": 299,
+                        "width": 1766,
+                        "Y": 1394,
+                        "height": 60
+                    },
+                    "text": "12636909<4R0U6604086M16122841660408293110964"
+                }
+            ]
+        },
+        "Indonesia-passport-mini.jpg": {
+            "boxes": [
+                {
+                    "geometry": {
+                        "X": 297,
+                        "width": 1669,
+                        "Y": 1234,
+                        "height": 55
+                    },
+                    "text": "P<IDNSINGOWIJOYO<<RIYANTO<MASIRAT<<<<<<<<<<<"
+                },
+                {
+                    "geometry": {
+                        "X": 297,
+                        "width": 1669,
+                        "Y": 1340,
+                        "height": 58
+                    },
+                    "text": "A7547020<9IDN7909021M1903049<<<<<<<<<<<<<<04"
+                }
+            ]
+        },
+        "Bulgaria-passport-mini.jpg": {
+            "boxes": [
+                {
+                    "suitableSize": 30,
+                    "geometry": {
+                        "X": 309,
+                        "width": 1757,
+                        "Y": 1246,
+                        "height": 61
+                    },
+                    "text": "P<BGRTODOROV<<RADKO<VESELINOV<<<<<<<<<<<<<<<",
+                    "target": ""
+                },
+                {
+                    "suitableSize": 31,
+                    "geometry": {
+                        "X": 306,
+                        "width": 1757,
+                        "Y": 1340,
+                        "height": 63
+                    },
+                    "text": "3805216803BGR7508251M15093047508258564<<<<66"
+                }
+            ]
+        },
+        "Dominicana-passport-mini.jpg": {
+            "boxes": [
+                {
+                    "geometry": {
+                        "X": 344,
+                        "width": 1751,
+                        "Y": 1241,
+                        "height": 60
+                    },
+                    "text": "PRD0M<0RTIZ<<VAL<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
+                },
+                {
+                    "geometry": {
+                        "X": 344,
+                        "width": 1749,
+                        "Y": 1318,
+                        "height": 60
+                    },
+                    "text": "894221564D0M7401205M1206184001748503265<<<<4"
+                }
+            ]
+        },
+        "Ireland-passport-mini.jpg": {
+            "boxes": [
+                {
+                    "geometry": {
+                        "X": 299,
+                        "width": 1777,
+                        "Y": 1271,
+                        "height": 60
+                    },
+                    "text": "P<IRLBRADFORD<<RAFE<<<<<<<<<<<<<<<<<<<<<<<<<"
+                },
+                {
+                    "geometry": {
+                        "X": 302,
+                        "width": 1772,
+                        "Y": 1363,
+                        "height": 62
+                    },
+                    "text": "PB73244672IRL8506682M1808203<<<<<<<<<<<<<<08"
+                }
+            ]
+        },
+        "Spain-passport-mini.jpg": {
+            "boxes": [
+                {
+                    "geometry": {
+                        "X": 278,
+                        "width": 1827,
+                        "Y": 1298,
+                        "height": 74
+                    },
+                    "text": "P<ESPF0MKIN<ALEKSEI<<<<<<<<<<<<<<<<<<<<<<<<<"
+                },
+                {
+                    "geometry": {
+                        "X": 273,
+                        "width": 1832,
+                        "Y": 1388,
+                        "height": 81
+                    },
+                    "text": "BB109068<1ESP8410044M1302273A2006018973<<<42"
+                }
+            ]
+        },
+        "Canada-passport-mini.jpg": {
+            "boxes": [
+                {
+                    "suitableSize": 30,
+                    "geometry": {
+                        "X": 326,
+                        "width": 1677,
+                        "Y": 1261,
+                        "height": 60
+                    },
+                    "text": "P<CANHARRIS<<TYLER<<<<<<<<<<<<<<<<<<<<<<<<<<",
+                    "target": ""
+                },
+                {
+                    "suitableSize": 30,
+                    "geometry": {
+                        "X": 331,
+                        "width": 1667,
+                        "Y": 1354,
+                        "height": 61
+                    },
+                    "text": "WQ758905<2CAN8712231M1701164<<<<<<<<<<<<<<06"
+                }
+            ]
+        },
+        "Germany-passport-mini.jpg": {
+            "boxes": [
+                {
+                    "suitableSize": 35,
+                    "geometry": {
+                        "X": 337,
+                        "width": 1766,
+                        "Y": 1204,
+                        "height": 70
+                    },
+                    "text": "P<DHCK<<UD0<<<<<<<<<<<<<<<<<<<<"
+                },
+                {
+                    "suitableSize": 39,
+                    "geometry": {
+                        "X": 335,
+                        "width": 1767,
+                        "Y": 1305,
+                        "height": 78
+                    },
+                    "text": "CG313NPXP2D<<5208177N2509138<<<<<<<<<<<<<8",
+                    "target": ""
+                }
+            ]
+        },
+        "Kazakhstan-passport-mini.jpg": {
+            "boxes": [
+                {
+                    "geometry": {
+                        "X": 297,
+                        "width": 1742,
+                        "Y": 1227,
+                        "height": 58
+                    },
+                    "text": "P<KAZIVAN0V<<IVAN<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
+                },
+                {
+                    "geometry": {
+                        "X": 293,
+                        "width": 1749,
+                        "Y": 1320,
+                        "height": 63
+                    },
+                    "text": "N061821444KAZ9308174M2908172810830350197<<<6"
+                }
+            ]
+        },
+        "China-passport-mini.jpg": {
+            "boxes": [
+                {
+                    "geometry": {
+                        "X": 341,
+                        "width": 1747,
+                        "Y": 1279,
+                        "height": 77
+                    },
+                    "text": "P0 CHNCH0NG<<CHING<<<<<<<<<<<<<<<<<<<<<<<<<<<"
+                },
+                {
+                    "geometry": {
+                        "X": 344,
+                        "width": 1742,
+                        "Y": 1380,
+                        "height": 75
+                    },
+                    "text": "G180334782CHN8407172M181010931920112<<<<<<08"
+                }
+            ]
+        },
+        "Netherlands-passport-mini.jpg": {
+            "boxes": [
+                {
+                    "geometry": {
+                        "X": 354,
+                        "width": 1657,
+                        "Y": 1232,
+                        "height": 62
+                    },
+                    "text": "P<NLDVERMANEN<<DIMPHY<<<<<<<<<2<Z<<<Z<ZZ2Z"
+                },
+                {
+                    "geometry": {
+                        "X": 1364,
+                        "width": 172,
+                        "Y": 10,
+                        "height": 77
+                    },
+                    "text": "盖"
+                },
+                {
+                    "geometry": {
+                        "X": 352,
+                        "width": 1654,
+                        "Y": 1330,
+                        "height": 60
+                    },
+                    "text": "NW1L44LJ46NLD6906206F2105127186291538<<<<<08"
+                },
+                {
+                    "geometry": {
+                        "X": 1901,
+                        "width": 142,
+                        "Y": 2,
+                        "height": 41
+                    },
+                    "text": "coccooo"
+                }
+            ]
+        }
+    },
+    "terms": {},
+    "dirPath": "G:\\imagetrans_project\\passports",
+    "previousOCR": {
+        "engineName": "baidu",
+        "lang": "Chinese"
+    }
+}

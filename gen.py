@@ -1,5 +1,6 @@
 import names
 import random
+import json
 import datetime
 import mrz.generator.td1
 import mrz.generator.td2
@@ -124,11 +125,53 @@ def merged_image(imgs):
     dst.putdata(newData)
     return dst
 
+def mrz_filled(merged_image,nationality):
+    f = open("images/1.itp","r",encoding="utf-8")
+    content = f.read()
+    f.close()
+    project = json.loads(content)
+    #print(project)
+    img_name = COUNTRIES[nationality]
+    images = project["images"]
+    image = images[img_name]
+    print(image)
+    boxes = image["boxes"]
+    print(boxes)
+    rect = get_bounding_rect(boxes)
+    img = Image.open("images/"+img_name+"-text-removed.jpg")
+    img.convert("RGBA")
+    ratio = merged_image.width/merged_image.height
+    rect_width = int(rect["width"])
+    rect_height = int(rect["height"])
+    print(rect_width)
+    print(rect_height)
+    merged_image = merged_image.resize((rect_width,int(rect_width/ratio)))
+    img.paste(merged_image, (rect["X"], rect["Y"]))
+    return img
+
+def get_bounding_rect(boxes):
+    minX = boxes[0]["geometry"]["X"]
+    minY = boxes[0]["geometry"]["Y"]
+    maxX = 0
+    maxY = 0
+    for box in boxes:
+        geometry = box["geometry"]
+        X = geometry["X"]
+        Y = geometry["Y"]
+        width = geometry["width"]
+        height = geometry["height"]
+        minX = min(minX, X)
+        minY = min(minY, Y)
+        maxX = max(maxX, X+width)
+        maxY = max(maxY, Y+height)
+    return {"X":minX,"Y":minY,"width":maxX - minX,"height":maxY - minY}
 
 if __name__ == "__main__":
     for key in COUNTRIES.keys():
         code = random_generate(doc_type="TD3",nationality=key)
         imgs = generate_images(code)
         merged = merged_image(imgs)
-        merged.save(key+".png","PNG")
+        full = mrz_filled(merged,key)
+        full.save(key+".png","PNG")
+        exit()
     

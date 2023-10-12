@@ -659,30 +659,13 @@
                 },
                 {
                     "geometry": {
-                        "X": 1364,
-                        "width": 172,
-                        "Y": 10,
-                        "height": 77
-                    },
-                    "text": "盖"
-                },
-                {
-                    "geometry": {
                         "X": 352,
                         "width": 1654,
                         "Y": 1330,
                         "height": 60
                     },
-                    "text": "NW1L44LJ46NLD6906206F2105127186291538<<<<<08"
-                },
-                {
-                    "geometry": {
-                        "X": 1901,
-                        "width": 142,
-                        "Y": 2,
-                        "height": 41
-                    },
-                    "text": "coccooo"
+                    "text": "NW1L44LJ46NLD6906206F2105127186291538<<<<<08",
+                    "target": ""
                 }
             ]
         }

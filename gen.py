@@ -57,7 +57,7 @@ def random_generate(doc_type="",nationality="GBR"):
 def generate_images(code):
     fonts = ["OCR-B.ttf"]
     lines = str(code).split("\n")
-    width = len(lines[0])*15 + 10
+    width = int(len(lines[0])*14.8)
     generator = GeneratorFromStrings(lines,count = len(lines),fonts = fonts, width=width, alignment=1, background_type=1)
     imgs = []
     for img, lbl in generator:

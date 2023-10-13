@@ -58,8 +58,8 @@ def random_generate(doc_type="",nationality="GBR"):
 def generate_images(code):
     fonts = ["OCR-B.ttf"]
     lines = str(code).split("\n")
-    width = int(len(lines[0])*14.8)
-    generator = GeneratorFromStrings(lines,count = len(lines),fonts = fonts, width=width, alignment=1, background_type=1)
+    width = int(len(lines[0])*30)
+    generator = GeneratorFromStrings(lines,count = len(lines),size=48,fonts = fonts, width=width,character_spacing=5, alignment=0, background_type=1)
     imgs = []
     for img, lbl in generator:
         imgs.append(img)
@@ -119,7 +119,7 @@ def merged_image(imgs):
     newData = []
     for item in datas:
         if item[0] == 255 and item[1] == 255 and item[2] == 255:
-            newData.append((255, 255, 255, 0))
+            newData.append((0, 0, 0, 0))
         else:
             newData.append(item)
     dst.putdata(newData)
@@ -139,14 +139,30 @@ def mrz_filled(merged_image,nationality):
     print(boxes)
     rect = get_bounding_rect(boxes)
     img = Image.open("images/"+img_name+"-text-removed.jpg")
-    img.convert("RGBA")
     ratio = merged_image.width/merged_image.height
     rect_width = int(rect["width"])
     rect_height = int(rect["height"])
     print(rect_width)
     print(rect_height)
-    merged_image = merged_image.resize((rect_width,int(rect_width/ratio)))
-    img.paste(merged_image, (rect["X"], rect["Y"]))
+    resized_height = int(rect_width/ratio)
+    merged_image = merged_image.resize((rect_width,resized_height))
+    img_pixels = img.load()
+    merged_image_pixels = merged_image.load()
+    merged_image.save("merged.png","PNG")
+    #img.paste(merged_image, (rect["X"], rect["Y"]))
+    print(merged_image_pixels[0,0])
+    for i in range(rect_width): # for every pixel:
+        x = rect["X"] + i
+        for j in range(resized_height):
+            y = rect["Y"] + j
+            #print(merged_image_pixels[i,j])
+            #print(merged_image_pixels[i,j][0])
+            if merged_image_pixels[i,j][3] != 0:
+                r = min(255,merged_image_pixels[i,j][0])
+                g = min(255,merged_image_pixels[i,j][1])
+                b = min(255,merged_image_pixels[i,j][2])
+                img_pixels[x,y] = (r,g,b)
+                
     return img
 
 def get_bounding_rect(boxes):

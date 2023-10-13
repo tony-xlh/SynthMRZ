@@ -147,4 +147,7 @@ if __name__ == "__main__":
             code = random_generate(doc_type="TD3",nationality=key)
             full = mrz_filled(code,key)
             full.save(os.path.join(key,str(i)+".jpg"))
+            f = open(os.path.join(key,str(i)+".txt"),"w",encoding="utf8")
+            f.write(str(code))
+            f.close()
     

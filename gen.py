@@ -7,6 +7,7 @@ import mrz.generator.td2
 import mrz.generator.td3
 import mrz.generator.mrva
 import mrz.generator.mrvb
+import os
 from PIL import Image, ImageFont, ImageDraw
 
 COUNTRIES = {
@@ -44,7 +45,6 @@ def random_generate(doc_type="",nationality="GBR"):
     given_names = random_given_names()
     if nationality == "" or nationality == None:
         nationality = random.choice(list(COUNTRIES.keys()))
-    print(nationality)
     sex = random.choice(['M', 'F'])
     if doc_type == "" or doc_type == None:
         doc_type = random.choice(MRZ_TYPES)
@@ -130,7 +130,7 @@ def mrz_filled(code,nationality):
     box2 = boxes[1]
     width = box1["geometry"]["width"]
     font_size = int(width/1828*48)
-    img = Image.open("images/"+img_name+"-text-removed.jpg")
+    img = Image.open(os.path.join("images",img_name+"-text-removed.jpg"))
     draw = ImageDraw.Draw(img)
     font = ImageFont.truetype("OCR-B.ttf", font_size)
     draw.text((box1["geometry"]["X"], box1["geometry"]["Y"]), code.split("\n")[0], fill ="black", font = font, align ="right")  
@@ -138,8 +138,13 @@ def mrz_filled(code,nationality):
     return img
 
 if __name__ == "__main__":
+    print("Generating...")
     for key in COUNTRIES.keys():
-        code = random_generate(doc_type="TD3",nationality=key)
-        full = mrz_filled(code,key)
-        full.save(key+".png","PNG")
+        if os.path.exists(key) == False:
+            os.mkdir(key)
+        for i in range(20):
+            print(key+": "+str(i))
+            code = random_generate(doc_type="TD3",nationality=key)
+            full = mrz_filled(code,key)
+            full.save(os.path.join(key,str(i)+".jpg"))
     

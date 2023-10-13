@@ -132,10 +132,10 @@ def mrz_filled(code,nationality):
     box1 = boxes[0]
     box2 = boxes[1]
     width = box1["geometry"]["width"]
-    font_size = int(width/1828*48)
+    font_size = int(width/1828*56)
     img = Image.open(os.path.join("images",img_name+"-text-removed.jpg"))
     draw = ImageDraw.Draw(img)
-    font = ImageFont.truetype("OCR-B.ttf", font_size)
+    font = ImageFont.truetype("OCRB-Regular.ttf", font_size)
     draw.text((box1["geometry"]["X"], box1["geometry"]["Y"]), code.split("\n")[0], fill ="black", font = font, align ="right")  
     draw.text((box2["geometry"]["X"], box2["geometry"]["Y"]), code.split("\n")[1], fill ="black", font = font, align ="right")  
     return img
@@ -149,6 +149,7 @@ if __name__ == "__main__":
             print(key+": "+str(i))
             code = random_generate(doc_type="TD3",nationality=key)
             full = mrz_filled(code,key)
+            #full.save(key+".jpg")
             full.save(os.path.join(key,str(i)+".jpg"))
             f = open(os.path.join(key,str(i)+".txt"),"w",encoding="utf8")
             f.write(str(code))

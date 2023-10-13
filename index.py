@@ -35,7 +35,6 @@ def generate_MRZ_image():
     buffered = BytesIO()
     img.save(buffered, format="JPEG")
     img_str = base64.b64encode(buffered.getvalue())
-    print(img_str)
     response = {}
     response["base64"] = img_str.decode()
     response["MRZ"] = str(code)

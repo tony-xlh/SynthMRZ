@@ -7,8 +7,7 @@ import mrz.generator.td2
 import mrz.generator.td3
 import mrz.generator.mrva
 import mrz.generator.mrvb
-from PIL import Image
-from trdg.generators import GeneratorFromStrings
+from PIL import Image, ImageFont, ImageDraw
 
 COUNTRIES = {
     "BLR":"Belarus-passport-mini.jpg",
@@ -34,7 +33,8 @@ COUNTRIES = {
     "ESP":"Spain-passport-mini.jpg",
     "GBR":"United-kingdom-of-great-britain-passport-mini.jpg",
     "URY":"Uruguay-passport-mini.jpg",
-    "UZB":"Uzbekistan-passport-mini.jpg"
+    "UZB":"Uzbekistan-passport-mini.jpg",
+    "USA":"USA-Passport.jpg"
 }
 
 MRZ_TYPES = ['TD1','TD2','TD3','MRVA','MRVB']
@@ -54,16 +54,6 @@ def random_generate(doc_type="",nationality="GBR"):
     ).year, end_year=datetime.datetime.now().year + 10).strftime('%y%m%d')
     code = generate_MRZ(doc_type,nationality,surname,given_names,document_number,nationality,birth_date,sex,expiry_date,"","")
     return code
-
-def generate_images(code):
-    fonts = ["OCR-B.ttf"]
-    lines = str(code).split("\n")
-    width = int(len(lines[0])*30)
-    generator = GeneratorFromStrings(lines,count = len(lines),size=48,fonts = fonts, width=width,character_spacing=5, alignment=0, background_type=1)
-    imgs = []
-    for img, lbl in generator:
-        imgs.append(img)
-    return imgs
 
 def random_string(length=10, allowed_chars='ABCDEFGHIJKLMNOPQRSTUVWXYZ'):
     return ''.join(random.choice(allowed_chars) for i in range(length))
@@ -125,69 +115,31 @@ def merged_image(imgs):
     dst.putdata(newData)
     return dst
 
-def mrz_filled(merged_image,nationality):
+def mrz_filled(code,nationality):
+    code = str(code)
     f = open("images/1.itp","r",encoding="utf-8")
     content = f.read()
     f.close()
     project = json.loads(content)
-    #print(project)
     img_name = COUNTRIES[nationality]
     images = project["images"]
     image = images[img_name]
-    print(image)
     boxes = image["boxes"]
-    print(boxes)
-    rect = get_bounding_rect(boxes)
+    #print(boxes)
+    box1 = boxes[0]
+    box2 = boxes[1]
+    width = box1["geometry"]["width"]
+    font_size = int(width/1828*48)
     img = Image.open("images/"+img_name+"-text-removed.jpg")
-    ratio = merged_image.width/merged_image.height
-    rect_width = int(rect["width"])
-    rect_height = int(rect["height"])
-    print(rect_width)
-    print(rect_height)
-    resized_height = int(rect_width/ratio)
-    merged_image = merged_image.resize((rect_width,resized_height))
-    img_pixels = img.load()
-    merged_image_pixels = merged_image.load()
-    merged_image.save("merged.png","PNG")
-    #img.paste(merged_image, (rect["X"], rect["Y"]))
-    print(merged_image_pixels[0,0])
-    for i in range(rect_width): # for every pixel:
-        x = rect["X"] + i
-        for j in range(resized_height):
-            y = rect["Y"] + j
-            #print(merged_image_pixels[i,j])
-            #print(merged_image_pixels[i,j][0])
-            if merged_image_pixels[i,j][3] != 0:
-                r = min(255,merged_image_pixels[i,j][0])
-                g = min(255,merged_image_pixels[i,j][1])
-                b = min(255,merged_image_pixels[i,j][2])
-                img_pixels[x,y] = (r,g,b)
-                
+    draw = ImageDraw.Draw(img)
+    font = ImageFont.truetype("OCR-B.ttf", font_size)
+    draw.text((box1["geometry"]["X"], box1["geometry"]["Y"]), code.split("\n")[0], fill ="black", font = font, align ="right")  
+    draw.text((box2["geometry"]["X"], box2["geometry"]["Y"]), code.split("\n")[1], fill ="black", font = font, align ="right")  
     return img
-
-def get_bounding_rect(boxes):
-    minX = boxes[0]["geometry"]["X"]
-    minY = boxes[0]["geometry"]["Y"]
-    maxX = 0
-    maxY = 0
-    for box in boxes:
-        geometry = box["geometry"]
-        X = geometry["X"]
-        Y = geometry["Y"]
-        width = geometry["width"]
-        height = geometry["height"]
-        minX = min(minX, X)
-        minY = min(minY, Y)
-        maxX = max(maxX, X+width)
-        maxY = max(maxY, Y+height)
-    return {"X":minX,"Y":minY,"width":maxX - minX,"height":maxY - minY}
 
 if __name__ == "__main__":
     for key in COUNTRIES.keys():
         code = random_generate(doc_type="TD3",nationality=key)
-        imgs = generate_images(code)
-        merged = merged_image(imgs)
-        full = mrz_filled(merged,key)
+        full = mrz_filled(code,key)
         full.save(key+".png","PNG")
-        exit()
     

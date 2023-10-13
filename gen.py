@@ -64,6 +64,9 @@ def random_surname():
 def random_given_names():
     return names.get_first_name()
 
+def random_nationality():
+    return random.choice(list(COUNTRIES.keys()))
+
 def random_date(start_year=1900, end_year=datetime.datetime.now().year):
     year = random.randint(start_year, end_year)
     month = random.randint(1, 12)

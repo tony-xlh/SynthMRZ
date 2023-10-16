@@ -21,7 +21,7 @@
         "char_center_align": "[\\!\\?！？⁉‼…—~⋮0-9a-zA-Z]",
         "showTTSButton": true,
         "char_rotate": "[…—~]",
-        "byTextArea": false,
+        "byTextArea": true,
         "invert": false,
         "resize_before_OCR": true,
         "inferSeparation": true,
@@ -257,28 +257,6 @@
                 }
             ]
         },
-        "Kyrgyzstan-passport-mini.jpg": {
-            "boxes": [
-                {
-                    "geometry": {
-                        "X": 326,
-                        "width": 1684,
-                        "Y": 1232,
-                        "height": 58
-                    },
-                    "text": "P<KGZB0 GUBAEV<<AZAMAT<<<<<<<<<<<<<<<<<<<<<<"
-                },
-                {
-                    "geometry": {
-                        "X": 326,
-                        "width": 1682,
-                        "Y": 1318,
-                        "height": 58
-                    },
-                    "text": "AC264414<5KGZ7701166M17030102160119770033446"
-                }
-            ]
-        },
         "Mexico-passport-mini.jpg": {
             "boxes": [
                 {
@@ -392,8 +370,7 @@
                     },
                     "text": "4220167749USA8810171F2712239572615374<585990"
                 }
-            ],
-            "text-removed": true
+            ]
         },
         "Poland-passport-mini.jpg": {
             "boxes": [
@@ -576,6 +553,33 @@
                     "text": "WQ758905<2CAN8712231M1701164<<<<<<<<<<<<<<06"
                 }
             ]
+        },
+        "Japanese-passport.jpg": {
+            "boxes": [
+                {
+                    "suitableSize": 17,
+                    "geometry": {
+                        "X": 46,
+                        "width": 1038,
+                        "Y": 650,
+                        "height": 34
+                    },
+                    "text": "P<JPNTSUJI<<HARUNA<<<<<<<<<<<<<<<<<<<<<<<<<<",
+                    "target": ""
+                },
+                {
+                    "suitableSize": 22,
+                    "geometry": {
+                        "X": 46,
+                        "width": 1040,
+                        "Y": 704,
+                        "height": 44
+                    },
+                    "text": "MJ06341542JPN0012164F2501316<<<<<<<<<<<<<<02",
+                    "target": ""
+                }
+            ],
+            "text-removed": true
         },
         "Germany-passport-mini.jpg": {
             "boxes": [

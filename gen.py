@@ -23,8 +23,8 @@ COUNTRIES = {
     "IDN":"Indonesia-passport-mini.jpg",
     "IRL":"Ireland-passport-mini.jpg",
     "ITA":"Italy-passport-mini.jpg",
+    "JPN":"Japanese-passport.jpg",
     "KAZ":"Kazakhstan-passport-mini.jpg",
-    "KGZ":"Kyrgyzstan-passport-mini.jpg",
     "MEX":"Mexico-passport-mini.jpg",
     "MDA":"Moldova-passport-mini.jpg",
     "NLD":"Netherlands-passport-mini.jpg",
@@ -150,8 +150,9 @@ if __name__ == "__main__":
             code = random_generate(doc_type="TD3",nationality=key)
             full = mrz_filled(code,key)
             #full.save(key+".jpg")
-            full.save(os.path.join(key,str(i)+".jpg"))
-            f = open(os.path.join(key,str(i)+".txt"),"w",encoding="utf8")
+            formatted_index = "{:0>2d}".format(i)
+            full.save(os.path.join(key,formatted_index+".jpg"))
+            f = open(os.path.join(key,formatted_index+".txt"),"w",encoding="utf8")
             f.write(str(code))
             f.close()
     

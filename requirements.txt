@@ -1,0 +1,5 @@
+Flask==2.3.2
+Flask_Cors==3.0.10
+mrz==0.6.2
+names==0.3.0
+Pillow==9.5.0

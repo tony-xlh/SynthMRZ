@@ -18,7 +18,18 @@ pip install -r requirements.txt
 * Endpoint: `/code`
 * Methods: `GET`, `POST`
 * Arguments:
-   * doc_type: "TD1", "TD2", "TD3"
+   * doc_type: required. Optional values: "TD1", "TD2", "TD3", "MRVA", "MRVB"
+   * random: pass "true" to generate a random MRZ
+   * country
+   * surname
+   * given_names
+   * document_number
+   * nationality
+   * birth_date
+   * sex
+   * expiry_date
+   * optional1
+   * optional2
 * Response:
     
     ```json

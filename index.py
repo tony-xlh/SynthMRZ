@@ -18,7 +18,22 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 @cross_origin()
 def generate_MRZ():
     doc_type = request.args.get('doc_type')
-    code = str(gen.random_generate(doc_type=doc_type))
+    random = request.args.get('random')
+    code = ""
+    if random == "true":
+        code = str(gen.random_generate(doc_type=doc_type))
+    else:
+        country = request.args.get('country')
+        surname = request.args.get('surname')
+        given_names = request.args.get('given_names')
+        document_number = request.args.get('document_number')
+        nationality = request.args.get('nationality')
+        birth_date = request.args.get('birth_date')
+        sex = request.args.get('sex')
+        expiry_date = request.args.get('expiry_date')
+        optional1 = request.args.get('optional1')
+        optional2 = request.args.get('optional2')
+        code = str(gen.generate_MRZ(doc_type,nationality,surname,given_names,document_number,nationality,birth_date,sex,expiry_date,optional1,optional2))
     response = {}
     response["MRZ"] = code
     resp = Response(json.dumps(response))

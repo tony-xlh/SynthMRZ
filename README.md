@@ -68,3 +68,10 @@ Sample requests:
     }
     ```
 
+### Deploy to Vercel
+
+This branch is modified for vercel deployment.
+
+1. Install Vercel: npm i -g vercel
+2. Test for development: vc dev
+3. Deploy for production: vc

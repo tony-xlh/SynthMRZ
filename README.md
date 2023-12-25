@@ -34,9 +34,25 @@ pip install -r requirements.txt
     
     ```json
     {
-        "MRZ": "Generated MRZ String"
+        "MRZ": "Generated MRZ String",
+        "surname": "random surname",
+        "nationality": "random nationality",
+        "sex": "random sex",
+        "document_number": "random document number",
+        "birth_date": "random birth date",
+        "expiry_date": "random expiry date"
     }
     ```
+    
+    The random values only exist in random mode.
+    
+Sample requests:
+
+```
+/code?doc_type=TD2&random=true
+
+/code?doc_type=TD2&country=GBR&surname=PHUONG&given_names=STEVE&document_number=FPOGDULZU&nationality=GBR&birth_date=520608&sex=M&expiry_date=311205&optional1=&optional2=
+```
 
 ### Generate MRZ Image
 

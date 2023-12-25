@@ -54,6 +54,29 @@ def random_generate(doc_type="",nationality="GBR"):
     ).year, end_year=datetime.datetime.now().year + 10).strftime('%y%m%d')
     code = generate_MRZ(doc_type,nationality,surname,given_names,document_number,nationality,birth_date,sex,expiry_date,"","")
     return code
+    
+def random_generate_with_parts(doc_type="",nationality="GBR"):
+    surname = random_surname()
+    given_names = random_given_names()
+    if nationality == "" or nationality == None:
+        nationality = random.choice(list(COUNTRIES.keys()))
+    sex = random.choice(['M', 'F'])
+    if doc_type == "" or doc_type == None:
+        doc_type = random.choice(MRZ_TYPES)
+    document_number = random_string(9, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789')
+    birth_date = random_date().strftime('%y%m%d')
+    expiry_date = random_date(start_year=datetime.datetime.now(
+    ).year, end_year=datetime.datetime.now().year + 10).strftime('%y%m%d')
+    code = generate_MRZ(doc_type,nationality,surname,given_names,document_number,nationality,birth_date,sex,expiry_date,"","")
+    return {
+        "MRZ": str(code),
+        "surname": surname,
+        "nationality": nationality,
+        "sex": sex,
+        "document_number": document_number,
+        "birth_date": birth_date,
+        "expiry_date": expiry_date
+    }
 
 def random_string(length=10, allowed_chars='ABCDEFGHIJKLMNOPQRSTUVWXYZ'):
     return ''.join(random.choice(allowed_chars) for i in range(length))

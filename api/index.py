@@ -21,7 +21,7 @@ def generate_MRZ():
     random = request.args.get('random')
     response = {}
     if random == "true":
-        response = str(gen.random_generate_with_parts(doc_type=doc_type))
+        response = str(gen.random_generate_with_parts(doc_type=doc_type,nationality=""))
     else:
         country = request.args.get('country')
         surname = request.args.get('surname')

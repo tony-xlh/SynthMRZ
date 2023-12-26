@@ -21,7 +21,7 @@ def generate_MRZ():
     random = request.args.get('random')
     response = {}
     if random == "true":
-        response = str(gen.random_generate_with_parts(doc_type=doc_type,nationality=""))
+        response = gen.random_generate_with_parts(doc_type=doc_type,nationality="")
     else:
         country = request.args.get('country')
         surname = request.args.get('surname')
@@ -35,8 +35,9 @@ def generate_MRZ():
         optional2 = request.args.get('optional2')
         code = str(gen.generate_MRZ(doc_type,nationality,surname,given_names,document_number,nationality,birth_date,sex,expiry_date,optional1,optional2))
         response["MRZ"] = code
-    
-    resp = Response(json.dumps(response))
+
+    json_string = json.dumps(response)
+    resp = Response(json_string)
     resp.headers['Content-Type'] = 'application/json'
     return resp
 

@@ -22,19 +22,25 @@ def generate_MRZ():
     response = {}
     if random == "true":
         response = gen.random_generate_with_parts(doc_type=doc_type,nationality="")
+        response["success"] = True
     else:
-        country = request.args.get('country')
-        surname = request.args.get('surname')
-        given_names = request.args.get('given_names')
-        document_number = request.args.get('document_number')
-        nationality = request.args.get('nationality')
-        birth_date = request.args.get('birth_date')
-        sex = request.args.get('sex')
-        expiry_date = request.args.get('expiry_date')
-        optional1 = request.args.get('optional1')
-        optional2 = request.args.get('optional2')
-        code = str(gen.generate_MRZ(doc_type,nationality,surname,given_names,document_number,nationality,birth_date,sex,expiry_date,optional1,optional2))
-        response["MRZ"] = code
+        try:
+            country = request.args.get('country')
+            surname = request.args.get('surname')
+            given_names = request.args.get('given_names')
+            document_number = request.args.get('document_number')
+            nationality = request.args.get('nationality')
+            birth_date = request.args.get('birth_date')
+            sex = request.args.get('sex')
+            expiry_date = request.args.get('expiry_date')
+            optional1 = request.args.get('optional1')
+            optional2 = request.args.get('optional2')
+            code = str(gen.generate_MRZ(doc_type,nationality,surname,given_names,document_number,nationality,birth_date,sex,expiry_date,optional1,optional2))
+            response["MRZ"] = code
+            response["success"] = True
+        except Exception as e:
+            response["success"] = False
+            response["errorMessage"] = e.msg
 
     json_string = json.dumps(response)
     resp = Response(json_string)

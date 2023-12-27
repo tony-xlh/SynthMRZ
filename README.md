@@ -40,7 +40,9 @@ pip install -r requirements.txt
         "sex": "random sex",
         "document_number": "random document number",
         "birth_date": "random birth date",
-        "expiry_date": "random expiry date"
+        "expiry_date": "random expiry date",
+        "success": true,
+        "errorMessage", "error message"
     }
     ```
     

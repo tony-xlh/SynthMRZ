@@ -70,6 +70,7 @@ def random_generate_with_parts(doc_type="",nationality="GBR"):
     code = generate_MRZ(doc_type,nationality,surname,given_names,document_number,nationality,birth_date,sex,expiry_date,"","")
     return {
         "MRZ": str(code),
+        "doc_type": doc_type,
         "surname": surname,
         "given_names": given_names,
         "nationality": nationality,

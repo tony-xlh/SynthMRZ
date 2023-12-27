@@ -35,6 +35,7 @@ pip install -r requirements.txt
     ```json
     {
         "MRZ": "Generated MRZ String",
+        "doc_type": "random doc_type",
         "surname": "random surname",
         "given_names": "random given names",
         "nationality": "random nationality",

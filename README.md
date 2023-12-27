@@ -36,6 +36,7 @@ pip install -r requirements.txt
     {
         "MRZ": "Generated MRZ String",
         "surname": "random surname",
+        "given_names": "random given names",
         "nationality": "random nationality",
         "sex": "random sex",
         "document_number": "random document number",

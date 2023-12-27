@@ -71,6 +71,7 @@ def random_generate_with_parts(doc_type="",nationality="GBR"):
     return {
         "MRZ": str(code),
         "surname": surname,
+        "given_names": given_names,
         "nationality": nationality,
         "sex": sex,
         "document_number": document_number,

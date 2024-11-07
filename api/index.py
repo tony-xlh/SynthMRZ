@@ -35,7 +35,7 @@ def generate_MRZ():
             expiry_date = request.args.get('expiry_date')
             optional1 = request.args.get('optional1')
             optional2 = request.args.get('optional2')
-            code = str(gen.generate_MRZ(doc_type,nationality,surname,given_names,document_number,nationality,birth_date,sex,expiry_date,optional1,optional2))
+            code = str(gen.generate_MRZ(doc_type,country,surname,given_names,document_number,nationality,birth_date,sex,expiry_date,optional1,optional2))
             response["MRZ"] = code
             response["success"] = True
         except Exception as e:

@@ -41,6 +41,7 @@ def generate_MRZ():
         except Exception as e:
             response["success"] = False
             response["errorMessage"] = e.msg
+            response["cause"] = e.cause
 
     json_string = json.dumps(response)
     resp = Response(json_string)
